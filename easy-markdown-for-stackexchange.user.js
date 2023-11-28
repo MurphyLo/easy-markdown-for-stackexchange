@@ -35,9 +35,13 @@
     // Function to fetch content of a post
     async function fetchMarkdown(postId) {
         const response = await fetch(`/posts/${postId}/edit-inline`);
+        // Check user login status.
+        if (response.status === 404) {
+            return "--- Please LOG IN StackExchange/Stackoverflow to view and copy the Markdown content. ---";
+        }
+
         const data = await response.text();
         let markdown = data.match(/<textarea[^>]*>([\s\S]*?)<\/textarea>/)[1];
-
         // Decode HTML entities
         return decodeHtmlEntities(markdown);
     }
