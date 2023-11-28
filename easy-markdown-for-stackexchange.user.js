@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name Easy Markdown for StackExchange
-// @version 2.2
+// @version 2.3
 // @author Murphy Lo (http://github.com/MurphyLo)
 // @description Adds "Markdown" and "Copy" buttons to display original Markdown content in StackExchange sites.
 // @license GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
