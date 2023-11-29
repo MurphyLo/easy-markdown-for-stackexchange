@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Easy Markdown for StackExchange
 // @name:zh-CN 在StackExchange中显示Markdown
-// @version 2.3.1
+// @version 2.4
 // @author Murphy Lo (http://github.com/MurphyLo)
 // @description Adds "Markdown" and "Copy" buttons to display original Markdown content in StackExchange sites.
 // @description:zh-CN 在StackExchange网站上添加“Markdown”和“Copy”按钮，以显示原始Markdown内容
@@ -142,7 +142,6 @@
         document.addEventListener('keydown', handleKeyDown);
         // Click modal background to close modal
         modal.onclick = (e) => e.target === modal && closeModal();
-
     }
 
     // Function to copy text to clipboard
@@ -168,8 +167,16 @@
         const printButton = document.createElement('a');
         printButton.href = '#';
         printButton.textContent = 'Markdown';
-        printButton.title = 'View this post\'s original Markdown content';
+        printButton.title = 'View this post\'s Markdown content';
         printButton.onclick = showMarkdown;
+        printButton.style.cssText = `
+            background-color: #f5f5f5;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;`;
+        printButton.onmouseover = () => printButton.style.backgroundColor = '#e0e0e0';
+        printButton.onmouseout = () => printButton.style.backgroundColor = '#f5f5f5';
 
         const printButtonWrapper = document.createElement('div');
         printButtonWrapper.className = 'flex--item';
@@ -181,11 +188,22 @@
         const copyButton = document.createElement('a');
         copyButton.href = '#';
         copyButton.textContent = 'Copy';
-        copyButton.title = 'Copy this post\'s original Markdown content to clipboard';
+        copyButton.title = 'Copy this post\'s Markdown content to clipboard';
         copyButton.onclick = (event) => {
             event.preventDefault();
             copyToClipboard(printButton.markdownContent);
+            copyButton.textContent = 'Copied!';
+            setTimeout(() => copyButton.textContent = 'Copy', 2000);
         };
+        copyButton.style.cssText = `
+            background-color: #f5f5f5;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: background-color 0.3s;`;
+        copyButton.onmouseover = () => copyButton.style.backgroundColor = '#e0e0e0';
+        copyButton.onmouseout = () => copyButton.style.backgroundColor = '#f5f5f5';
 
         const copyButtonWrapper = document.createElement('div');
         copyButtonWrapper.className = 'flex--item';
