@@ -1,8 +1,10 @@
 // ==UserScript==
-// @name Easy Markdown for StackExchange
+// @name:en-US Easy Markdown for StackExchange
+// @name:zh-CN 在StackExchange中显示Markdown
 // @version 2.3
 // @author Murphy Lo (http://github.com/MurphyLo)
-// @description Adds "Markdown" and "Copy" buttons to display original Markdown content in StackExchange sites.
+// @description:en-US Adds "Markdown" and "Copy" buttons to display original Markdown content in StackExchange sites.
+// @description:zh-CN 在StackExchange网站上添加“Markdown”和“Copy”按钮，以显示原始Markdown内容
 // @license GNU GPL v3 (http://www.gnu.org/copyleft/gpl.html)
 // @match https://*.stackoverflow.com/questions/*
 // @match https://*.superuser.com/questions/*
